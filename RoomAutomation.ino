@@ -1,7 +1,7 @@
 const int trigPin1 = 7;
 const int echoPin1 = 6;
 int count1=0;
-const int fixed=20; //fixed no. of people
+int fixed=0; //fixed no. of people
 int count2;
 const int led1=3;
 const int led2=8;
@@ -49,15 +49,24 @@ void loop() {
   
 
   //led part
-  if(distance1==20)
+  if(distance1==20 && fixed<=10)
   {
     digitalWrite(led1,HIGH);
+    fixed++;
+    for(int i=1;i<=10;i++)
+  {
     count1++;
+    if(count1==10)
+    {
+      break;
+    }
+  }
   }
   else
   {
     digitalWrite(led1,LOW);
   }
+  
   if(count1>0)
   {
       digitalWrite(led2,HIGH);
@@ -70,7 +79,7 @@ void loop() {
   {
     count2=count1;
   }
-  if(distance2==20)
+  if(distance2==20 && count2>=0)
   {
     digitalWrite(led3,HIGH);
     count2--;
@@ -79,7 +88,7 @@ void loop() {
   {
     digitalWrite(led3,LOW);
   }
-   if(count2<0)
+   if(count2==-1)
    {
     digitalWrite(led4,HIGH);
     digitalWrite(led2,LOW);
