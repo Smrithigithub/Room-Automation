@@ -3,10 +3,10 @@ const int echoPin1 = 6;
 int count1=0;
 int fixed=0; //fixed no. of people
 int count2;
-const int led1=3;
-const int led2=8;
-const int led3=9;
-const int led4=10;
+const int greenled1=3;
+const int whiteled2=8;
+const int redled3=9;
+const int yellowled4=10;
 
 // Define the pins for the second ultrasonic sensor
 const int trigPin2 = 5;
@@ -51,7 +51,7 @@ void loop() {
   //led part
   if(distance1==20 && fixed<=10)
   {
-    digitalWrite(led1,HIGH);
+    digitalWrite(greenled1,HIGH);
     fixed++;
     for(int i=1;i<=10;i++)
   {
@@ -64,16 +64,16 @@ void loop() {
   }
   else
   {
-    digitalWrite(led1,LOW);
+    digitalWrite(greenled1,LOW);
   }
   
   if(count1>0)
   {
-      digitalWrite(led2,HIGH);
+      digitalWrite(whiteled2,HIGH);
   }
   else
   {
-    digitalWrite(led2,LOW);
+    digitalWrite(whiteled2,LOW);
   }
   if(count1==10)
   {
@@ -81,21 +81,21 @@ void loop() {
   }
   if(distance2==20 && count2>=0)
   {
-    digitalWrite(led3,HIGH);
+    digitalWrite(redled3,HIGH);
     count2--;
   }
   else
   {
-    digitalWrite(led3,LOW);
+    digitalWrite(redled3,LOW);
   }
    if(count2==-1)
    {
-    digitalWrite(led4,HIGH);
-    digitalWrite(led2,LOW);
+    digitalWrite(yellowled4,HIGH);
+    digitalWrite(whiteled2,LOW);
    }
    else
    {
-    digitalWrite(led4,LOW);
+    digitalWrite(yellowled4,LOW);
     
    }
    
